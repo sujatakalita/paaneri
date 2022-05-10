@@ -23,7 +23,7 @@ class Product extends Model
     }
     public function subCategory()
     {
-        return $this->hasMany(productCategory::class,'sub_category_id');
+        return $this->hasMany(ProductCategory::class,'sub_category_id');
     }
     public static function activeProduct(){
         return $products=Product::where('is_available',1)->where('status',1)->get();
@@ -35,18 +35,18 @@ class Product extends Model
 
     public function productCategory()
     {
-        return $this->hasMany(productCategory::class);
+        return $this->hasMany(ProductCategory::class);
     }
     public function productColour()
     {
-        return $this->hasMany(productColour::class);
+        return $this->hasMany(ProductColour::class);
     }
     public function productSize()
     {
-        return $this->hasMany(productSize::class);
+        return $this->hasMany(ProductSize::class);
     }
     public function productMeasurment(){
-        return $this->hasMany(productMeasurment::class);
+        return $this->hasMany(ProductMeasurment::class);
     }
 }
 

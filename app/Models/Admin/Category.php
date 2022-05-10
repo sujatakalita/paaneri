@@ -26,7 +26,7 @@ class Category extends Model
       }
       public function megaMenuCategory()
     {
-        return $this->belongsTo(megaMenuCategory::class);
+        return $this->belongsTo(MegaMenuCategory::class);
     }
 
       public static function categoryAlredyUse($name)

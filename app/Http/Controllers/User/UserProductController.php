@@ -7,6 +7,7 @@ use App\Models\Admin\HomePageSlider;
 use App\Models\Admin\MegaMenu;
 use App\Models\Admin\Product;
 use App\Models\Admin\ProductAttachment;
+use App\Models\Admin\productSize;
 use Illuminate\Http\Request;
 
 class UserProductController extends Controller
@@ -16,9 +17,11 @@ class UserProductController extends Controller
         $mega_menus = MegaMenu::with('megaMenuCategory')->get();
 
         $products = Product::query();
-        $products = $this->filter($products)->with(['productColor', 'productSize', 'productAttachment' => function ($query) {
+        
+        $products = $this->filter($products)->with(['productColor','productSize','productAttachment' => function ($query) {
             $query->where('is_default', 1);
         }])->orderBy('id', 'DESC')->paginate(50);
+      
         return view('user.product', compact('products'));
     }
     public function viewDetails($product_slug)
