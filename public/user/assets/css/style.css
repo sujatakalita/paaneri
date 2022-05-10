@@ -3333,7 +3333,7 @@ button.btn.btn-solid:active, button.btn.btn-outline:active {
     width: 100%;
     height: 100%;
     z-index: -1; }
-
+  
 .category-m .slick-slide > div {
   margin: 0 10px; }
 
@@ -6810,7 +6810,7 @@ header {
 .top-header {
   background-color: #f8f8f8; }
   .top-header .header-contact {
-    padding: 15px 0; }
+    padding: 4px 0; }
     .top-header .header-contact li {
       color: #999999;
       font-size: 14px;
@@ -6821,7 +6821,7 @@ header {
   .top-header .header-dropdown li {
     cursor: pointer;
     color: #999999;
-    padding: 15px 25px;
+    padding: 4px 25px;
     padding-right: 0; }
     .top-header .header-dropdown li:first-child {
       padding-right: 0; }
@@ -6932,7 +6932,8 @@ header {
   .main-menu .brand-logo {
     display: inline-block;
     padding-top: 35px;
-    padding-bottom: 35px; }
+    padding-bottom: 35px;
+    margin-left: 15px; }
   .main-menu .menu-left {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -6942,7 +6943,7 @@ header {
             align-items: center; }
     .main-menu .menu-left .navbar {
       display: inline-block;
-      padding: 40px 45px 40px 0; }
+      padding: -1px 45px 40px 0; }
       .main-menu .menu-left .navbar i {
         font-size: 28px;
         color: #222222;
@@ -8724,16 +8725,17 @@ header.stickycls {
   color: #393230; }
 
 .pixelstrap a, .pixelstrap a:hover, .pixelstrap a:active {
-  padding-right: 45px;
+  padding-right: 18px;
   color: #222222;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 23px;
   text-decoration: none;
   text-transform: uppercase;
   padding-top: 42px;
   padding-bottom: 42px;
-  letter-spacing: 0.07em; }
+  /* letter-spacing: 0.07em;  */
+}
 
 .pixelstrap a:hover {
   color: var(--theme-deafult); }
@@ -9082,10 +9084,10 @@ header.stickycls {
     left: 50% !important;
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%); }
-  .pixelstrap a .sub-arrow::before {
+  /* .pixelstrap a .sub-arrow::before {
     content: "\f107";
     font-family: FontAwesome;
-    position: absolute; }
+    position: absolute; } */
   .pixelstrap ul {
     border: none;
     padding: 15px 0px 15px 0px;
