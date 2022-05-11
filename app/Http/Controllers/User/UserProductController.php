@@ -17,11 +17,11 @@ class UserProductController extends Controller
         $mega_menus = MegaMenu::with('megaMenuCategory')->get();
 
         $products = Product::query();
-        
+
         $products = $this->filter($products)->with(['productColor','productSize','productAttachment' => function ($query) {
             $query->where('is_default', 1);
         }])->orderBy('id', 'DESC')->paginate(50);
-      
+
         return view('user.product', compact('products'));
     }
     public function viewDetails($product_slug)

@@ -235,7 +235,7 @@
                             <ul class="onhover-show-div">
                                 @if(auth()->check())
                                 <li><a href="">My Order</a></li>
-                                <li><a href="">Logout</a></li>
+                                <li><a href="{{route('logout')}}">Logout</a></li>
 
                                 @else
                                 <li><a href="{{route('user.login')}}">Login</a></li>
@@ -448,12 +448,12 @@
                                                         <div class="col mega-box">
                                                             <div class="link-section">
                                                                 <div class="menu-title">
-                                                                    <h5>{{$mega_menu_category->category->name??''}}</h5>
+                                                                    <h5><a href="http://localhost/paaneri/product?categories%5B%5D={{$mega_menu_category->id}}">{{$mega_menu_category->category->name??''}}</a></h5>
                                                                 </div>
                                                                 <div class="menu-content">
                                                                     <ul>
                                                                         @foreach(megaMenuCategory($mega_menu_category->category->id??'null') as $key=>$sub_category)
-                                                                        <li><a href="nursery.html">{{$sub_category->name}}</a></li>
+                                                                        <li><a href="http://localhost/paaneri/product?categories%5B%5D={{$mega_menu_category->category->id??null}}">{{$sub_category->name}}</a></li>
                                                                         @endforeach
                                                                     </ul>
                                                                 </div>

@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -29,7 +29,7 @@ Route::get('/dashboard', function () {
 
 Route::prefix("/product")->group(function () {
 
-    Route::get('/', [UserProductController::class, 'index'])->name('user.product');
+    Route::any('/', [UserProductController::class, 'index'])->name('user.product');
     Route::get('/{product_slug}', [UserProductController::class, 'viewDetails'])->name('user.product.details');
     Route::post('/byColour',[UserProductController::class, 'productByColour'])->name('user.product.bycolour');
     Route::get('filter/{filter}', [UserProductController::class, 'filterProduct'])->name('user.filterproduct');

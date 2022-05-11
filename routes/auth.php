@@ -12,10 +12,10 @@ use App\Http\Controllers\User\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
-   
+
     Route::get('user/register', [RegisterController::class, 'createUser'])->name('user.register');
     Route::get('user/login', [RegisterController::class, 'login'])->name('user.login');
-  
+
     Route::post('/otp',[RegisterController::class,'sendOTP'])->name('user.sendotp');
 
     Route::get('register', [RegisteredUserController::class, 'create'])
@@ -58,6 +58,6 @@ Route::middleware('auth')->group(function () {
 
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
-    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+    Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
 });
