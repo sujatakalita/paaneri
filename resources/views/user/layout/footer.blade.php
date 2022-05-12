@@ -7,7 +7,7 @@
                         <div class="subscribe">
                             <div>
                                 <h4>KNOW IT ALL FIRST!</h4>
-                                <p>Never Miss Anything From Multikart By Signing Up To Our Newsletter.</p>
+                                <p>Never Miss Anything From Paaneri By Signing Up To Our Newsletter.</p>
                             </div>
                         </div>
                     </div>
@@ -31,8 +31,8 @@
                         <h4>about</h4>
                     </div>
                     <div class="footer-contant">
-                        <div class="footer-logo"><img src="{{asset('public/user/assets/images/icon/logo.jpg')}}" alt=""></div>
-                        <p>We have a hard working management and qualified staff with a specialized degree in International Business Fashion who has a vision & dedication to understand the varying needs of the International buyers and who can diversify and design their ideas into reality.</p>
+                        <div class="footer-logo"><img src="{{asset('public/user/assets/images/icon/paaneri.png')}}" alt=""></div>
+                        <p>Paaneri is Nagree of Designer Sarees, Bridal wear, Punjabi's Dress Material & Mes wear. A one-stop complete family showroom for Garments and customized designer wear for Men's, Kids & Women.</p>
                         <div class="footer-social">
                             <ul>
                                 <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -51,11 +51,11 @@
                         </div>
                         <div class="footer-contant">
                             <ul>
-                                <li><a href="#">mens</a></li>
-                                <li><a href="#">womens</a></li>
-                                <li><a href="#">clothing</a></li>
-                                <li><a href="#">accessories</a></li>
-                                <li><a href="#">featured</a></li>
+                                <li><a href="#">Login</a></li>
+                                <li><a href="#">Shopping Bag</a></li>
+                                <li><a href="#">Wish List</a></li>
+                                <li><a href="#">Order History</a></li>
+                                <li><a href="#">Order Tracking</a></li>
                             </ul>
                         </div>
                     </div>
@@ -63,15 +63,15 @@
                 <div class="col">
                     <div class="sub-title">
                         <div class="footer-title">
-                            <h4>why we choose</h4>
+                            <h4>Usefull Links</h4>
                         </div>
                         <div class="footer-contant">
                             <ul>
-                                <li><a href="#">shipping & return</a></li>
-                                <li><a href="#">secure shopping</a></li>
-                                <li><a href="#">gallary</a></li>
-                                <li><a href="#">affiliates</a></li>
-                                <li><a href="#">contacts</a></li>
+                                <li><a href="#">FAQ's</a></li>
+                                <li><a href="#">Return Policy</a></li>
+                                <li><a href="#">Private Policy</a></li>
+                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="#">Shipping Policy</a></li>
                             </ul>
                         </div>
                     </div>
@@ -79,20 +79,12 @@
                 <div class="col">
                     <div class="sub-title">
                         <div class="footer-title">
-                            <h4>store information</h4>
+                            <h4>Need help</h4>
                         </div>
                         <div class="footer-contant">
                             <ul class="contact-list">
-                                <li><i class="fa fa-map-marker"></i>Paaneri Exports Paaneri Exim Pvt. Ltd. Kaizer
-                                    Paaneri Marketing Pvt. Ltd.
-                                   Address: 217, Ceaser's Court Hsg. Soc. S. V. Road, Andheri (W) Mumbai - 58, India.
-                                </li>
-                                <li><i class="fa fa-phone"></i>+91-22 2628 3733, +91-22 4029 2929</li>
-                                <li><i class="fa fa-envelope-o"></i><a href="#">info@paaneri.com
-                                        paaneri@mtnl.net.in
-                                        paaneri@vsnl.com</a></li>
-                                <li><i class="fa fa-fax"></i>
-                                Fax: +91-22 670 0040</li>
+                                <li><a href="tel:919867622150" style="font-size: 22px; color: black;">+91 9867622150</a></li>
+                                <li><a href="mailto:info@paaneri.com" style="color: black;"><b>info@paaneriindia.com</b></a></li>
                             </ul>
                         </div>
                     </div>
@@ -105,8 +97,7 @@
             <div class="row">
                 <div class="col-xl-6 col-md-6 col-sm-12">
                     <div class="footer-end">
-                        <p><i class="fa fa-copyright" aria-hidden="true"></i> 2017-18 themeforest powered by
-                            pixelstrap</p>
+                        <p><i class="fa fa-copyright" aria-hidden="true"></i> 2014 - 22 paaneri, All Rights Reserved.</p>
                     </div>
                 </div>
                 <div class="col-xl-6 col-md-6 col-sm-12">

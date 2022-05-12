@@ -36,7 +36,7 @@
                                 </a>
                             </div>
                             <div class="brand-logo">
-                                <a href="{{route('dashboard')}}"><img src="{{asset('public/user/assets/images/icon/logo.jpg')}}" class="img-fluid blur-up lazyload" alt=""></a>
+                                <a href="{{route('dashboard')}}"><img src="{{asset('public/user/assets/images/icon/paaneri.png')}}" class="img-fluid blur-up lazyload" alt=""></a>
                             </div>
                         </div>
                         <div class="menu-right pull-right">
@@ -424,7 +424,7 @@
                             </div>
                         </div>
                         <div class="brand-logo">
-                        <a href="{{route('dashboard')}}"><img src="{{asset('public/user/assets/images/icon/logo.jpg')}}" class="img-fluid blur-up lazyload" alt=""></a>
+                        <a href="{{route('dashboard')}}"><img src="{{asset('public/user/assets/images/icon/paaneri.png')}}" class="img-fluid blur-up lazyload" alt=""></a>
                         </div>
                     </div>
                     <div class="menu-right pull-right">
