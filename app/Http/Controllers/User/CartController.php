@@ -16,9 +16,7 @@ class CartController extends Controller
             $product_id=Crypt::decrypt($product_id);
             $user_id=auth()->user()->id;
             $product=Product::find($product_id);
-
             $cart=Cart::where('user_id',$user_id)->where('product_id',$product_id)->first();
-
             if($cart){
                 $data=[
                     'qty'=>$cart->qty +1,
@@ -29,7 +27,6 @@ class CartController extends Controller
                  return redirect()->back();
             }else{
                 $data=[
-
                     'product_id'=>$product_id,
                     'user_id'=>auth()->user()->id,
                     'qty'=>1,
@@ -41,7 +38,6 @@ class CartController extends Controller
                return redirect()->back();
             }
         } catch (\Throwable $th) {
-
             Toastr::warning('Something want wrong', '', ["positionClass" => "toast-top-right"]);
                 return redirect()->back();
         }
@@ -50,7 +46,6 @@ class CartController extends Controller
         return view('user.cart.view');
     }
     public function updateCartProduct(Request $request){
-
        try {
            $cart=Cart::where('product_id',$request->product_id)->where('user_id',auth()->user()->id)->first();
            $qty=$request->qty;
