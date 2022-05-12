@@ -24,6 +24,6 @@ class MegaMenu extends Model
     }
     public function megaMenuCategory()
     {
-        return $this->hasMany(MegaMenuCategory::class);
+        return $this->hasMany(MegaMenuCategory::class,'mega_menu_id');
     }
 }

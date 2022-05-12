@@ -439,6 +439,7 @@
                                     <li class="mega" id="hover-cls">
                                         <a href="#">{{$mega_menu->name}} @if($mega_menu->mega_menu_type==3)<div class="lable-nav">new</div>@endif</a>
                                         <!-- <a href="#">feature <div class="lable-nav">new</div></a> -->
+
                                         @if($mega_menu->megaMenuCategory->count()>0)
                                         <ul class="mega-menu full-mega-menu">
                                             <li>
