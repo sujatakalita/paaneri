@@ -88,4 +88,22 @@ class CartController extends Controller
             }
         }
     }
+
+    public function deleteCartItem(Request $request)
+    {
+        try {
+            $cart=Cart::where('id',$request->id)->where('user_id',auth()->user()->id)->first();
+            $data=[
+                'deleted_at'=>date("Y-m-d H:i:s")
+            ];
+            $cart->update($data);
+            if($cart){
+                echo "1";
+            } else {
+                echo "2";
+            }
+        } catch (\Throwable $th) {
+            echo "3";
+        }
+    }
 }

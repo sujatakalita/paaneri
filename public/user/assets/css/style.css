@@ -1103,8 +1103,8 @@ button {
   padding: 13px 29px;
   color: #ffffff;
   letter-spacing: 0.05em;
-  border: 2px solid var(--theme-deafult);
-  background-image: linear-gradient(30deg, var(--theme-deafult) 50%, transparent 50%);
+  border: 2px solid #dc202f;
+  background-image: linear-gradient(30deg, #dc202f 50%, transparent 50%);
   background-size: 850px;
   background-repeat: no-repeat;
   background-position: 0;
@@ -6935,7 +6935,8 @@ header {
     display: inline-block;
     padding-top: 7px;
     padding-bottom: 7px;
-    margin-left: 15px; }
+    /*margin-left: 15px; */
+  }
   .main-menu .menu-left {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -9081,7 +9082,7 @@ header.stickycls {
     .pixelstrap .full-mega-menu ul {
       background-color: transparent; }
     .pixelstrap .full-mega-menu .mega-box {
-      max-width: 20%; }
+      max-width: 25%; }
   .pixelstrap .category-menu.center-menu {
     left: 50% !important;
     -webkit-transform: translateX(-50%);
@@ -9403,7 +9404,7 @@ header.stickycls {
     .top-header .header-dropdown .mobile-account i, .top-header .header-dropdown .mobile-wishlist i {
       font-size: 22px;
       font-family: themify;
-      color: #999999; }
+      color: black; }
       .top-header .header-dropdown .mobile-account i:before, .top-header .header-dropdown .mobile-wishlist i:before {
         content: "\e602"; }
     .top-header .header-dropdown .mobile-account .onhover-show-div, .top-header .header-dropdown .mobile-wishlist .onhover-show-div {
@@ -9420,7 +9421,9 @@ header.stickycls {
       font-family: themify;
       color: #999999 !important; }
       .top-header .header-dropdown .mobile-wishlist i:before {
-        content: "\e634"; }
+        content: "\e634";
+        color: black; 
+      }
   .main-menu .menu-left.category-nav-right .navbar {
     padding-left: 0 !important; }
   .main-menu .menu-left .navbar {
@@ -9460,12 +9463,12 @@ header.stickycls {
       /*display: none;*/ 
     }
   .main-menu .menu-right .icon-nav .mobile-search {
-    right: 80%;
+    right: 77%;
     z-index: 1; }
     .main-menu .menu-right .icon-nav .mobile-search i {
       display: inline-block;
       font-size: 22px;
-      color: #999999; }
+      color: black; }
     .main-menu .menu-right .icon-nav .mobile-search img {
       display: none; }
     .main-menu .menu-right .icon-nav .mobile-search .show-div .form-group {
@@ -9474,7 +9477,7 @@ header.stickycls {
       font-size: 14px; }
   .brand-logo {
     position: absolute;
-    left: 50%;
+    left: 15%;
     margin-right: -50%;
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
@@ -9486,7 +9489,7 @@ header.stickycls {
 
 @media (max-width: 480px) {
   .brand-logo img {
-    height: 25px; } }
+    height: 75px; } }
 
 /**=================================
     Modal css start

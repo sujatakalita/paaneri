@@ -15,7 +15,8 @@ class Cart extends Model
         'product_id',
         'qty',
         'price',
-        'total_price'
+        'total_price',
+        'deleted_at'
     ];
     public function product()
     {

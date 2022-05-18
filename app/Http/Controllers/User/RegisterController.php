@@ -14,7 +14,6 @@ class RegisterController extends Controller
     }
     public function sendOTP(Request $request)
     {
-        
         try {
             $otp = $this->generateOtp();
             $already_mobile_no_verified = User::where('mobile_no', $request->mobile)->where('is_mobile_no_verified', 1)->first();
