@@ -5,6 +5,7 @@ use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\User\UserProductController;
+use App\Http\Controllers\User\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,10 @@ Route::prefix("/product")->group(function () {
     Route::get('/{product_slug}', [UserProductController::class, 'viewDetails'])->name('user.product.details');
     Route::post('/byColour',[UserProductController::class, 'productByColour'])->name('user.product.bycolour');
     Route::get('filter/{filter}', [UserProductController::class, 'filterProduct'])->name('user.filterproduct');
+});
+Route::prefix("wishlist")->group(function () {
+    Route::get('/store/{id}', [WishlistController::class,'store'])->name('user.wishlist.store');//store/{product_id}
+
 });
 Route::group(['middleware' => 'auth'], function(){
     Route::prefix("cart")->group(function () {

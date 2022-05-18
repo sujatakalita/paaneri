@@ -277,10 +277,7 @@
                             @endif
                             @endforeach
                             <div class="cart-info cart-wrap">
-                                <a href="{{route('user.cart.store',Crypt::encrypt($product->id))}}" title="Add to cart">
-                                    <i class="ti-shopping-cart"></i>
-                                </a>
-                                <a href="javascript:void(0)" title="Add to Wishlist">
+                                <a href="{{route('user.wishlist.store',$product->id)}}" title="Add to Wishlist">
                                     <i class="ti-heart" aria-hidden="true"></i>
                                 </a>
                             </div>
@@ -366,10 +363,7 @@
                             @endif
                             @endforeach
                             <div class="cart-info cart-wrap">
-                                <a href="{{route('user.cart.store',Crypt::encrypt($product->id))}}" title="Add to cart">
-                                    <i class="ti-shopping-cart"></i>
-                                </a>
-                                <a href="javascript:void(0)" title="Add to Wishlist">
+                                <a href="{{route('user.wishlist.store',$product->id)}}" title="Add to Wishlist">
                                     <i class="ti-heart" aria-hidden="true"></i>
                                 </a>
                             </div>
@@ -412,10 +406,7 @@
                             @endif
                             @endforeach
                             <div class="cart-info cart-wrap">
-                                <a href="{{route('user.cart.store',Crypt::encrypt($product->id))}}" title="Add to cart">
-                                    <i class="ti-shopping-cart"></i>
-                                </a>
-                                <a href="javascript:void(0)" title="Add to Wishlist">
+                                <a href="{{route('user.wishlist.store',$product->id)}}" title="Add to Wishlist">
                                     <i class="ti-heart" aria-hidden="true"></i>
                                 </a>
                             </div>
