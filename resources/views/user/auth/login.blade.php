@@ -44,6 +44,7 @@
                             <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
                         </div><button type="submit" class="btn btn-solid">Login</button>
                     </form>
+                    <h5 class="mt-3">Forgot <a href="{{route('user.login')}}">password</a> ?</h5>
                 </div>
             </div>
             <div class="col-lg-6 right-login">

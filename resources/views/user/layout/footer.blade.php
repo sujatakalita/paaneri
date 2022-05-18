@@ -67,9 +67,9 @@
                         </div>
                         <div class="footer-contant">
                             <ul>
-                                <li><a href="#">FAQ's</a></li>
-                                <li><a href="#">Return Policy</a></li>
-                                <li><a href="#">Private Policy</a></li>
+                                <li><a href="{{route('user.faqs')}}">FAQ's</a></li>
+                                <li><a href="{{route('user.return')}}">Return Policy</a></li>
+                                <li><a href="{{route('user.policy')}}">Private Policy</a></li>
                                 <li><a href="#">Terms & Conditions</a></li>
                                 <li><a href="#">Shipping Policy</a></li>
                             </ul>

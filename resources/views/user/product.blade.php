@@ -10,7 +10,7 @@
                 <div class="col-sm-3 collection-filter">
                     <form method="get">
                         <button type="submit" class="btn btn-solid" id="mc-submit" style="height:50px;width:260px">Filter</button>&nbsp;
-                        <a href="{{request()->url()}}" type="submit" class="btn btn-success" id="mc-submit" style="height:50px;width:260px">Clear Filter</a>
+                        <a href="{{request()->url()}}" type="submit" class="btn btn-success" id="mc-submit" style="height:34px;width:260px">Clear Filter</a>
                         <div class="collection-filter-block">
                             <!-- brand filter start -->
                             <div class="collection-mobile-back"><span class="filter-back"><i class="fa fa-angle-left" aria-hidden="true"></i> back</span></div>
@@ -34,7 +34,6 @@
                                 <div class="collection-collapse-block-content">
                                     <div class="color-selector">
                                         <ul>
-
                                             @foreach(allColors() as $key=>$color)
                                             <input class="form-check-input" type="checkbox" name="colours[]" value="{{$key}}" id="colour_id" style="height: 20px; width:25px;background-color:{{$key}};" {{ (is_array(request()->colours) && in_array($key, request()->colours)) ? ' checked' : '' }}>
                                             @endforeach

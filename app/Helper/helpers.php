@@ -8,6 +8,8 @@ use App\Models\Admin\ProductAttachment;
 use App\Models\Admin\ProductColour;
 use App\Models\Admin\ProductSize;
 use App\Models\User\Cart;
+use App\Models\User\Wishlist;
+use Gloudemans\Shoppingcart\Facades\Cart as FacadesCart;
 
 function latestDrops()
 {
@@ -95,4 +97,26 @@ function TempPayment($amount){
     $temp_payment = TempPayment::create($Order);
     return $temp_payment;
 }
+function addToWishlistAfterLogin(){
+    $wishlists = FacadesCart::instance('wishlist')->content();
 
+    foreach($wishlists as $key=>$wish_list){
+        if(!alreadyInWislist($wish_list->id)){
+            $data=[
+                'product_id'=>$wish_list->id,
+                'user_id'=>auth()->user()->id,
+            ];
+            $wish_list=Wishlist::create($data);
+        }
+
+    }
+
+}
+function alreadyInWislist($product_id){
+    $is_available=Wishlist::where('product_id',$product_id)->where('user_id',auth()->user()->id)->exists();
+     if($is_available){
+         return true;
+     }else{
+         return false;
+     }
+}
