@@ -9,6 +9,6 @@ class ReturnPolicy extends Controller
 {
     public function index()
     {
-        return view('user.policy.index');
+        return view('user.return.index');
     }
 }

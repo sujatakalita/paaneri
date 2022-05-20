@@ -536,7 +536,15 @@ del {
 .form-check-input:focus {
   -webkit-box-shadow: none;
           box-shadow: none; }
-
+.return-5{
+  margin-left: 10px;
+}
+i.ti-angle-double-right {
+    font-size: 10px;
+}
+.accordion-button {
+    background: white !important;
+}
 .media {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6823,7 +6831,7 @@ header {
   .top-header .header-dropdown li {
     cursor: pointer;
     color: #999999;
-    padding: 4px 25px;
+    padding: 0px 25px;
     padding-right: 0; }
     .top-header .header-dropdown li:first-child {
       padding-right: 0; }
@@ -6833,14 +6841,18 @@ header {
     .top-header .header-dropdown li i {
       padding-right: 5px;
       -webkit-transition: all 0.5s ease;
-      transition: all 0.5s ease; }
+      transition: all 0.5s ease; 
+      font-size: 17px;
+    }
     .top-header .header-dropdown li ul li {
       padding-top: 0;
       padding-bottom: 0; }
     .top-header .header-dropdown li a i {
       color: #999999;
       -webkit-transition: all 0.5s ease;
-      transition: all 0.5s ease; }
+      transition: all 0.5s ease;
+      font-size: 17px;
+    }
     .top-header .header-dropdown li a:hover i {
       color: var(--theme-deafult);
       -webkit-transition: all 0.5s ease;

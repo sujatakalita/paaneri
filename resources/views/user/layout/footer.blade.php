@@ -51,9 +51,9 @@
                         </div>
                         <div class="footer-contant">
                             <ul>
-                                <li><a href="#">Login</a></li>
-                                <li><a href="#">Shopping Bag</a></li>
-                                <li><a href="#">Wish List</a></li>
+                                <li><a href="{{route('user.login')}}">Login</a></li>
+                                <li><a href="{{route('user.cart.view')}}">Shopping Cart</a></li>
+                                <li><a href="{{route('user.wishlist.index')}}">Wish List</a></li>
                                 <li><a href="#">Order History</a></li>
                                 <li><a href="#">Order Tracking</a></li>
                             </ul>
