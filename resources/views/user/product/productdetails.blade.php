@@ -72,7 +72,7 @@
                             <div class="size-box">
                                 <ul>
                                     @foreach($product->productSize as $key=>$product_size)
-                                    <li><a href="javascript:void(0)">{{$product_size->unit_name??''}}</a></li>
+                                    <li onclick="productSize($product_size)"><a href="javascript:void(0)">{{$product_size->unit_name??''}}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -320,6 +320,10 @@
             },
 
         });
+
+    }
+    function productSize($product_size){
+      alert( $product_size);
 
     }
 </script>

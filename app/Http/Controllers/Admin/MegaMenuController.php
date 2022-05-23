@@ -7,7 +7,6 @@ use App\Models\Admin\MegaMenu;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Str;
-
 class MegaMenuController extends Controller
 {
     public function index()
