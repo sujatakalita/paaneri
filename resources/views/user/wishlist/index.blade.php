@@ -26,71 +26,66 @@
     @if($wishlists!=null)
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 table-responsive-xs">
-                <table class="table cart-table">
-                    <thead>
-                        <tr class="table-head">
-                            <th scope="col">image</th>
-                            <th scope="col">product name</th>
-                            <th scope="col">price</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        @if(auth()->check())
-                        @foreach($wishlists as $key=>$wish_list)
-                        <tr>
-                            <td>
-                                <a href="#"><img src="{{asset($wish_list->product->productAttachment()->first()->product_image_server_url)}}" alt=""></a>
-                            </td>
-                            <td><a href="#">{{$wish_list->product->title}}</a>
-
-                            </td>
-                            <td>
-                                <h5>{{number_format((float)$wish_list->product->market_price, 2, '.', '')}}</h5>
-                            </td>
-                            <td>
-                              <a href="" style="color: white;" class="btn btn-danger">Buy Now</a>
-                              &nbsp;<a href="{{route('user.wishlist.delete',Crypt::encrypt($wish_list->id))}}"><i class="ti-close" onclick="" title="remove from wishlist"></i></a>
-
-                            </td>
-
-                        </tr>
-                        @endforeach
-                        @else
-                        @foreach($wishlists as $key=>$wish_list)
-                        <tr>
-                            <td>
-                                <a href="#"><img src="{{asset($wish_list->options->image)}}" alt=""></a>
-                            </td>
-                            <td><a href="#">{{$wish_list->name}}</a>
-
-                            </td>
-                            <td>
-                                <h5>{{number_format((float)$wish_list->price, 2, '.', '')}}</h5>
-                            </td>
-                            <td>
-                              <a href="" style="color: white;" class="btn btn-danger">Buy Now</a>
-                              &nbsp;<a href="{{route('user.wishlist.delete',$wish_list->rowId)}}"><i class="ti-close" onclick="" title="remove from wishlist"></i></a>
-
-                            </td>
-
-                        </tr>
-                        @endforeach
-                        @endif
-                    </tbody>
-                </table>
-
+            @if(auth()->check())
+            @foreach($wishlists as $key=>$wish_list)
+            <div class="col-md-3 col-6 mt-2">
+                <div class="product-box">
+                    <div class="img-wrapper">
+                        <div class="front">
+                            <a href="#"><img src="{{asset($wish_list->product->productAttachment()->first()->product_image_server_url)}}" class="img-fluid border rounded" alt=""></a>
+                        </div>
+                        <div class="cart-info cart-wrap">
+                            <a href="#" title="Add to Cart">
+                                <i class="ti-shopping-cart" aria-hidden="true"></i>
+                            </a>
+                            <a href="{{route('user.wishlist.delete',Crypt::encrypt($wish_list->id))}}" title="Delete from Wishlist">
+                                <i class="ti-trash" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-detail">
+                        <a href="#">
+                            <h6>{{$wish_list->product->title}}</h6>
+                        </a>
+                        <h4 class="mt-2">₹ {{number_format((float)$wish_list->product->market_price, 2, '.', '')}}</h4>
+                    </div>
+                </div>
             </div>
+            @endforeach
+            @else
+            @foreach($wishlists as $key=>$wish_list)
+            <div class="col-md-3 col-6 mt-2">
+                <div class="product-box">
+                    <div class="img-wrapper">
+                        <div class="front">
+                            <a href="#"><img src="{{asset($wish_list->options->image)}}" class="img-fluid border rounded" alt=""></a>
+                        </div>
+                        <div class="cart-info cart-wrap">
+                            <a href="{{route('user.wishlist.delete',$wish_list->rowId)}}" title="Delete from Wishlist">
+                                <i class="ti-trash" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-detail">
+                        <a href="#">
+                            <h6>{{$wish_list->name}}</h6>
+                        </a>
+                        <h4 class="mt-2">₹ {{number_format((float)$wish_list->price, 2, '.', '')}}</h4>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            @endif
         </div>
-
+    </div>
+    @else
+    <div class="container">
+        <p>You have no items in your wishlist. Please, click here to <a href=""><u>continue shopping</u></a>.</p>
     </div>
     @endif
 </section>
 <!--section end-->
 @endsection
 @section('js')
-<script type="text/javascript" src="{{asset('public/user/assets/js/functions/cart-function.js')}}"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endsection
