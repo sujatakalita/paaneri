@@ -13,9 +13,9 @@
                 </div>
                 <div class="col-lg-6 text-end">
                     <ul class="header-dropdown">
-                        <li class="mobile-wishlist"><a href="{{route('user.wishlist.index')}}"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                        <li class="mobile-wishlist"><a href="{{route('user.wishlist.index')}}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                         </li>
-                        <li class="onhover-dropdown mobile-account"> <i class="fa fa-user" aria-hidden="true"></i>
+                        <li class="onhover-dropdown mobile-account"> <i class="fa fa-user-o" aria-hidden="true"></i>
                             My Account
                         </li>
                     </ul>
@@ -36,7 +36,7 @@
                                 </a>
                             </div>
                             <div class="brand-logo">
-                                <a href="{{route('dashboard')}}"><img src="{{asset('public/user/assets/images/icon/paaneri.png')}}" class="img-fluid blur-up lazyload" alt=""></a>
+                                <a href="{{route('index')}}"><img src="{{asset('public/user/assets/images/icon/paaneri.png')}}" class="img-fluid blur-up lazyload" alt=""></a>
                             </div>
                         </div>
                         <div class="menu-right pull-right">
@@ -220,10 +220,10 @@
                 <div class="col-lg-6 text-end">
                     <ul class="header-dropdown">
                         <li class="mobile-wishlist">
-                            <a href="{{route('user.wishlist.index')}}"><i class="fa fa-heart text-dark" aria-hidden="true"></i></a>
+                            <a href="{{route('user.wishlist.index')}}"><i class="fa fa-heart-o text-dark" aria-hidden="true"></i></a>
                         </li>
-                        <li class="onhover-dropdown mobile-account text-dark"> <i class="fa fa-user" aria-hidden="true"></i>
-                            My Account
+                        <li class="onhover-dropdown mobile-account text-dark"> <i class="fa fa-user-o" aria-hidden="true"></i>
+                            Account
                             <ul class="onhover-show-div">
                                 @if(auth()->check())
                                 <li><a class="text-dark" href="{{route('user.profile.view')}}">My Profile</a></li>
@@ -248,7 +248,7 @@
                 <div class="main-menu">
                     <div class="menu-left">
                         <div class="brand-logo">
-                            <a href="{{route('dashboard')}}">
+                            <a href="{{route('index')}}}">
                                 <img src="{{asset('public/user/assets/images/icon/paaneri.png')}}" class="img-fluid blur-up lazyload" alt="">
                             </a>
                         </div>

@@ -289,7 +289,7 @@ h5 {
 h6 {
   font-size: 14px;
   font-weight: 400;
-  color: #777777;
+  color: black;
   line-height: 24px; }
 
 ul {
@@ -536,7 +536,19 @@ del {
 .form-check-input:focus {
   -webkit-box-shadow: none;
           box-shadow: none; }
-
+.return-5{
+  margin-left: 10px;
+}
+i.ti-angle-double-right {
+    font-size: 10px;
+}
+.accordion-button {
+    background: white !important;
+}
+.update-btn {
+  background: #d3232e !important;
+  color: white !important;
+}
 .media {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6823,7 +6835,7 @@ header {
   .top-header .header-dropdown li {
     cursor: pointer;
     color: #999999;
-    padding: 4px 25px;
+    padding: 0px 25px;
     padding-right: 0; }
     .top-header .header-dropdown li:first-child {
       padding-right: 0; }
@@ -6833,14 +6845,18 @@ header {
     .top-header .header-dropdown li i {
       padding-right: 5px;
       -webkit-transition: all 0.5s ease;
-      transition: all 0.5s ease; }
+      transition: all 0.5s ease; 
+      font-size: 17px;
+    }
     .top-header .header-dropdown li ul li {
       padding-top: 0;
       padding-bottom: 0; }
     .top-header .header-dropdown li a i {
       color: #999999;
       -webkit-transition: all 0.5s ease;
-      transition: all 0.5s ease; }
+      transition: all 0.5s ease;
+      font-size: 17px;
+    }
     .top-header .header-dropdown li a:hover i {
       color: var(--theme-deafult);
       -webkit-transition: all 0.5s ease;
@@ -8876,7 +8892,7 @@ header.stickycls {
 
 .pixelstrap .full-mega-menu {
   width: 100% !important;
-  padding: 30px !important;
+  padding: 10px !important;
   border-radius: 0; }
   .pixelstrap .full-mega-menu .mega-box .link-section ul li a:hover, .pixelstrap .full-mega-menu .mega-box .link-section ul li a:focus {
     padding-top: 3px;
@@ -9067,7 +9083,7 @@ header.stickycls {
       position: relative; }
   .pixelstrap .full-mega-menu {
     position: absolute;
-    background-image: url("../images/mega.jpg");
+    /*background-image: url("../images/mega.jpg");*/
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: cover; }
@@ -9082,7 +9098,7 @@ header.stickycls {
     .pixelstrap .full-mega-menu ul {
       background-color: transparent; }
     .pixelstrap .full-mega-menu .mega-box {
-      max-width: 25%; }
+      max-width: 20%; }
   .pixelstrap .category-menu.center-menu {
     left: 50% !important;
     -webkit-transform: translateX(-50%);
@@ -11019,17 +11035,20 @@ header.stickycls {
       text-transform: capitalize;
       text-overflow: ellipsis;
       white-space: nowrap;
-      overflow: hidden; }
+      overflow: hidden;
+      font-family: system-ui;
+    }
     .product-box .product-detail h4,
     .product-box .product-info h4,
     .product-wrap .product-detail h4,
     .product-wrap .product-info h4 {
-      font-size: 18px;
+      font-size: 15px;
       color: #222222;
-      font-weight: 700;
+      margin-top: 10px;
       margin-bottom: 0;
       -webkit-transition: all 0.5s ease;
-      transition: all 0.5s ease; }
+      transition: all 0.5s ease; 
+    }
     .product-box .product-detail .color-variant,
     .product-box .product-info .color-variant,
     .product-wrap .product-detail .color-variant,
@@ -13686,7 +13705,7 @@ header.stickycls {
 .cart-section tbody tr td,
 .wishlist-section tbody tr td {
   min-width: 210px;
-  vertical-align: middle;
+  /*vertical-align: middle;*/
   color: #777777;
   border-top: 0;
   border-bottom: 1px solid #eeeeee !important;
@@ -13695,7 +13714,7 @@ header.stickycls {
   .cart-section tbody tr td p,
   .wishlist-section tbody tr td a,
   .wishlist-section tbody tr td p {
-    color: #777777;
+    color: black;
     font-weight: 400;
     font-size: 14px;
     text-transform: capitalize;
@@ -14226,16 +14245,17 @@ header.stickycls {
   margin-top: 10px;
   margin-bottom: 10px; }
   .product-right .size-box ul li {
-    height: 35px;
-    width: 56px;
-    border-radius: 50%;
-    margin-right: 10px;
+    height: 28px;
+    width: 46px;
+    margin: 4px 3px;
     cursor: pointer;
     border: 1px solid #efefef;
-    text-align: center; }
+    text-align: center;
+    font-size: 10px; 
+  }
     .product-right .size-box ul li a {
       color: #222222;
-      font-size: 18px;
+      font-size: 12px;
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
@@ -20742,7 +20762,7 @@ body.dark {
   .cart-section .cart-table thead th:last-child {
     display: none; }
   .cart-section tbody tr td {
-    min-width: 135px; }
+    min-width: 79px; }
     .cart-section tbody tr td:last-child {
       display: none; }
   .cart-section .cart-buttons > div:last-child {

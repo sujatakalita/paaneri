@@ -17,9 +17,9 @@ class WishlistController extends Controller
         if (auth()->check()) {
             $wishlists = Wishlist::with('product')->where('user_id', auth()->user()->id)->get();
         } else {
+            $wishlists =null;
             $wishlists = Cart::instance('wishlist')->content();
         }
-
         return view('user.wishlist.index',compact('wishlists'));
     }
     public function store($product_id)
