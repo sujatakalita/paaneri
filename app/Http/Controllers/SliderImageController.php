@@ -92,7 +92,7 @@ class SliderImageController extends Controller
         if($request->file('slider_images')!=null){
             $image=$request->file('slider_images');
             $imageName = $image->getClientOriginalName();
-            $image->move(public_path('admin/images/slide'), $imageName);  
+            $image->move(public_path('admin/images/slide'), $imageName);                                                                            
         } 
         
         $query = SliderImage::where('id',$id)->update([
