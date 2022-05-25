@@ -23,6 +23,8 @@
                                     <li><a href="{{route('admin.subcategory')}}"><i class="fa fa-circle"></i>Sub Category</a></li>
                                     <li><a href="{{route('admin.product.index')}}"><i class="fa fa-circle"></i>Product List</a></li>
                                     <li><a href="{{route('admin.addproduct')}}"><i class="fa fa-circle"></i>Add Product</a></li>
+                                    <li><a href="{{route('admin.slider')}}"><i class="fa fa-circle"></i>Add Slider Images</a></li>
+                                    
                                 </ul>
                             </li>
                         </ul>
