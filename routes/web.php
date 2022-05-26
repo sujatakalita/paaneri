@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\CheckoutController;
@@ -53,7 +54,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::post('/deleteCartItem', [CartController::class,'deleteCartItem']);
     });
     Route::prefix("checkout")->group(function () {
-        Route::get('/', [CheckoutController::class,'checkout'])->name('checkout');
+        Route::get('/{status}', [CheckoutController::class,'checkout'])->name('checkout');
         Route::post('/store', [CheckoutController::class,'store'])->name('user.checkout');
     });
     Route::prefix("review")->group(function () {
@@ -83,5 +84,9 @@ Route::group(['prefix' => 'policy'], function () {
 
 Route::group(['prefix' => 'return-policy'], function () {
     Route::any('/', [ReturnPolicy::class, 'index'])->name('user.return');
+});
+
+Route::prefix("/order")->group(function () {
+Route::post('/{product_id}', [OrderController::class, 'buyOrCart'])->name('admin.order.buyorcart');
 });
 require __DIR__ . '/auth.php';

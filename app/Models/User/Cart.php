@@ -10,13 +10,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Cart extends Model
 {
     use SoftDeletes;
+
     protected $fillable=[
         'user_id',
         'product_id',
+        'product_size_id',
+        'product_color_id',
         'qty',
         'price',
         'total_price',
-        'deleted_at'
+        'product_weight_price',
+        'status',
+
     ];
     public function product()
     {

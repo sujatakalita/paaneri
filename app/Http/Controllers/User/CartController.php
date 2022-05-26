@@ -35,7 +35,7 @@ class CartController extends Controller
                 ];
                Cart::create($data);
                Toastr::success('Product added in cart successfully', '', ["positionClass" => "toast-top-right"]);
-               return redirect()->back();
+               return redirect()->route('user.cart.view');
             }
         } catch (\Throwable $th) {
             Toastr::warning('Something want wrong', '', ["positionClass" => "toast-top-right"]);
