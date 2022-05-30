@@ -57,7 +57,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::post('/store', [CheckoutController::class,'store'])->name('user.checkout');
     });
     Route::prefix("review")->group(function () {
-        Route::post('/', [ReviewController::class,'Store'])->name('review.store');
+        Route::post('/', [ReviewController::class,'store'])->name('review.store');
     });
     Route::prefix("profile")->group(function () {
         Route::any('/', [UserProfileController::class,'profile'])->name('user.profile.view');

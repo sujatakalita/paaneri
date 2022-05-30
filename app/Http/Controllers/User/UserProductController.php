@@ -8,6 +8,7 @@ use App\Models\Admin\MegaMenu;
 use App\Models\Admin\Product;
 use App\Models\Admin\ProductAttachment;
 use App\Models\Admin\productSize;
+use App\Models\User\ProductReview;
 use Illuminate\Http\Request;
 
 class UserProductController extends Controller
@@ -40,9 +41,9 @@ class UserProductController extends Controller
                 }
             ])->where('slug', $product_slug)->first();
 
+            $reviews = ProductReview::with('product','user')->where([['status',1],['is_approved',1]])->get();
 
-
-            return view('user.product.productdetails', compact('product'));
+            return view('user.product.productdetails', compact('product','reviews'));
         } catch (\Throwable $th) {
             //throw $th;
         }

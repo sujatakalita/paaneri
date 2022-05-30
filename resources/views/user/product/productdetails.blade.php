@@ -54,18 +54,54 @@
                             @endforeach
 
                         </ul>
-
                         <h3 class="price-detail">Rs.{{number_format((float)$product->market_price, 2, '.', '')}}</h3>
                         <div id="selectSize" class="addeffect-section product-description border-product">
-                            <h6 class="product-title size-text">select size <span><a href="#" data-bs-toggle="modal" data-bs-target="#sizemodal">size
-                                        chart</a></span> &nbsp; &nbsp; <span><a href="#" data-bs-toggle="modal" data-bs-target="#sizemodal">Blouse Style &nbsp;&nbsp;</a></span></h6>
-                            <div class="modal fade" id="sizemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-
-                                        <div class="modal-body"><img src="" alt="" class="img-fluid blur-up lazyload"></div>
+                            <h6 class="product-title size-text">select size
+                                <span><small><a href="#" data-bs-toggle="modal" data-bs-target="#sizemodal">Size Chart</a></small></span>
+                                <span><small><a href="#" data-bs-toggle="modal" data-bs-target="#blousemodal">Blouse Style</a>&nbsp;&nbsp;&nbsp;&nbsp;</small></span>
+                            </h6>
+                            <div class="modal fade" id="sizemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Size Chart</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="btn-group btn-block" role="group" aria-label="Basic mixed styles example">
+                                      <button type="button" onclick="womenInches();" class="btn btn-danger">Women Inches</button>
+                                      <button type="button" onclick="womenCM();" class="btn btn-warning">Women CM's</button>
+                                      <button type="button" onclick="men();" class="btn btn-success">Men</button>
+                                      <button type="button" onclick="kidsGirl();" class="btn btn-primary">Kids - Girl</button>
+                                      <button type="button" onclick="kidsBoy();" class="btn btn-secondary">Kids - Boy</button>
+                                      <button type="button" onclick="footware();" class="btn btn-info">Footwear</button>
                                     </div>
+                                    <div class="mt-3">
+                                        <img src="{{asset('public/user/assets/images/size-chart/womens-size-chart-inches.webp')}}" alt="" class="img-fluid women-inches-images">
+                                        <img src="{{asset('public/user/assets/images/size-chart/womens-size-chart-cms.webp')}}" alt="" class="img-fluid women-cms-images">
+                                        <img src="{{asset('public/user/assets/images/size-chart/mens-size-chart.webp')}}" alt="" class="img-fluid men-image">
+                                        <img src="{{asset('public/user/assets/images/size-chart/kids-girl-sizechart.webp')}}" alt="" class="img-fluid kids-girl-image">
+                                        <img src="{{asset('public/user/assets/images/size-chart/kids-boy-sizechart.webp')}}" alt="" class="img-fluid kids-boy-image">
+                                        <img src="{{asset('public/user/assets/images/size-chart/jutti-size-chart.webp')}}" alt="" class="img-fluid footware-image">
+                                    </div>
+                                  </div>
                                 </div>
+                              </div>
+                            </div>
+                            <div class="modal fade" id="blousemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Blouse Design</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="mt-3">
+                                        <img src="{{asset('public/user/assets/images/size-chart/blouse-styles.jpg')}}" alt="" class="img-fluid">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                             @if($product->productSize!=null)
                             <h6 class="error-message">please select size</h6>
@@ -85,9 +121,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="product-buttons"><a href="#" class="btn btn-solid"  style="width:250px;height:60px;"><i class="fa fa-bookmark fz-16 me-2" aria-hidden="true"></i>Buy Now</a> <a href="#" class="btn btn-solid"  style="width:250px;height:60px;"><i class="fa fa-bookmark fz-16 me-2" aria-hidden="true"></i>Add To Cart</a></div>
+                        <div class="product-buttons">
+                            <a href="#" class="btn btn-solid"><i class="fa fa-shopping-cart fz-16 me-2" aria-hidden="true"></i>ADD TO CART</a>
+                            <a href="#" class="btn btn-solid" style="background: white; color: black; border-color: #f8f8f8;"><i class="fa fa-heart-o fz-16 me-2" aria-hidden="true"></i>WISHLIST</a>
+                        </div>
                         <div class="product-count">
-
                             @foreach($product->productMeasurment as $key=>$product_measurment)
                             <div class="row">
                                 <div class="col-sm">
@@ -103,16 +141,16 @@
                                 </div>
                             </div>
                             @endforeach
-
                         </div>
-
                         <div class="border-product">
                             <h6 class="product-title">shipping info</h6>
                             <ul class="shipping-info">
-                                <li>100% Original Products</li>
-                                <li>Custom fitting</li>
-                                <li>Pay on delivery is available</li>
-                                <li>Easy 15 days returns and exchanges</li>
+                                <li class="text-dark">✔ 100% Original Products</li>
+                                <li class="text-dark">✔ Custom fitting</li>
+                                <li class="text-dark">✔ 100% purchase protection</li>
+                                <li class="text-dark">✔ Easy 15 days returns and exchanges</li>
+                                <li class="text-dark">✔ Free shipping in India</li>
+                                <li class="text-dark">✔ Exclusive collection</li>
                             </ul>
                         </div>
                         <div class="border-product">
@@ -129,7 +167,7 @@
                         </div>
                         <div class="border-product">
                             <h6 class="product-title">100% secure payment</h6>
-                            <img src="{{asset('user/assets/images/payment.png')}}" class="img-fluid mt-1" alt="">
+                            <img style="max-width: 70%;" src="{{asset('public/user/assets/images/cards.webp')}}" class="img-fluid mt-1" alt="">
                         </div>
                     </div>
                 </div>
@@ -225,14 +263,11 @@
                                         <li>
                                             <div class="media">
                                                 <div class="media-body">
-                                                    <h6>Mark Jecno <span>( 12 Jannuary 2018 at 1:30AM )</span></h6>
-                                                    <p>Donec rhoncus massa quis nibh imperdiet dictum. Vestibulum id est sit amet felis
-                                                        fringilla bibendum at at leo. Proin molestie ac nisi eu laoreet. Integer
-                                                        faucibus enim nec ullamcorper tempor. Aenean nec felis dui. Integer tristique
-                                                        odio mi, in volutpat metus posuere eu. Aenean suscipit ipsum nunc, id volutpat
-                                                        lorem hendrerit ac. Sed id elit quam. In ac mauris arcu. Praesent eget lectus
-                                                        sit amet diam vestibulum varius. Suspendisse dignissim mattis leo, nec facilisis
-                                                        erat tempor quis. Vestibulum eu vestibulum ex.</p>
+                                                    @foreach($reviews as $review)
+                                                    <h6>{{ucwords($review->name)}}<span> ( {{ date('d  M,Y at h:i A', strtotime($review->created_at)) }} )</span></h6>
+                                                    <p>{!! $review->review !!}</p>
+                                                    <hr>
+                                                    @endforeach
 
                                                 </div>
                                             </div>
@@ -255,18 +290,22 @@
                                         </div>
                                     </div>
                                 </div>
+                                <input type="hidden" name="product_id" value={{ $product->id }}>
+                                @if(Auth::check())
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                @endif
+
                                 <div class="col-md-6">
                                     <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name"  name="name" placeholder="Enter Your name" required>
+                                    <input type="text" class="form-control" id="name"  name="name" value="{{ old('name') }}" placeholder="Enter Your name" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="email">Email</label>
-                                    <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+                                    <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="Email" required>
                                 </div>
-
                                 <div class="col-md-12">
                                     <label for="review">Review</label>
-                                    <textarea class="form-control" placeholder="Wrire Your Testimonial Here" name="review" id="exampleFormControlTextarea1" rows="6"></textarea>
+                                    <textarea class="form-control" placeholder="Wrire Your Testimonial Here" name="review" id="exampleFormControlTextarea1" rows="6">{{ old('review') }}</textarea>
                                 </div>
                                 <div class="col-md-12">
                                     <button class="btn btn-solid" type="submit">Submit YOur
@@ -283,10 +322,10 @@
 <br>
 @endsection
 @section('js')
+<script type="text/javascript" src="{{asset('public/user/assets/js/functions/product-detail-function.js')}}"></script>
 <script>
     function productColor(product_id, colour_id) {
         $.ajax({
-
             url: "{{route('user.product.bycolour')}}",
             dataType: 'json',
             type: 'post',
@@ -301,27 +340,18 @@
                 if (result.code == 200) {
                     var product_images = ``;
                     var datas = result.attachements;
-
                     datas.forEach(function(data, index) {
-
-                        product_images += `<div> <img src="http://localhost/paaneri/${data.product_image_server_url}" alt="" class="img-fluid blur-up lazyload image_zoom_cls-${index}"></div>`;
+                        product_images += `<div> <img src="http://159.65.147.244/paaneri/${data.product_image_server_url}" alt="" class="img-fluid blur-up lazyload image_zoom_cls-${index}"></div>`;
                     });
-
                     $('.product_images').html(product_images);
                     datas.forEach(function(data, index) {
                         var index_value = index + 1;
-                        product_images += `<img src="http://localhost/paaneri/${data.product_image_server_url}" alt="" class="img-fluid blur-up lazyload">`;
+                        product_images += `<img src="http://159.65.147.244/paaneri/${data.product_image_server_url}" alt="" class="img-fluid blur-up lazyload">`;
                     });
-
                     $('.product_images_show').html(product_images);
-
-
                 }
             },
-
         });
-
     }
 </script>
-
 @endsection

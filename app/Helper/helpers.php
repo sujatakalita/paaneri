@@ -48,8 +48,30 @@ function ammountWithgst(){
     return $totalpricewithgst;
 }
 
+// mega menu for header
 function MegaMenuAll(){
     return MegaMenu::with('megaMenuCategory')->where('status',1)->get();
+}
+
+// mega menu for display category with images
+function MegaMenuAllDisplay(){
+    return MegaMenu::with('megaMenuCategory')->where('status',1)->take(6)->get();
+}
+
+// display saree categories with images
+function sareeSubCategories(){
+    // with('subCategory')
+    return Category::where('parent_id',32)->where('status',1)->take(6)->get();
+}
+
+// display man categories with images
+function bestForManCategories(){
+    return Category::where('parent_id',143)->where('status',1)->take(4)->get();
+}
+
+// display man categories with images
+function bestForLehengaCategories(){
+    return Category::where('parent_id', 77)->orWhere('parent_id', 78)->orWhere('parent_id', 79)->orWhere('parent_id', 80)->where('parent_id',78)->where('status',1)->take(12)->get();
 }
 
 function megaMenuCategory($category_id){

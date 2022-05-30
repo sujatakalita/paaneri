@@ -242,13 +242,13 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
                 <div class="main-menu">
                     <div class="menu-left">
                         <div class="brand-logo">
-                            <a href="{{route('index')}}}">
+                            <a href="{{route('index')}}">
                                 <img src="{{asset('public/user/assets/images/icon/paaneri.png')}}" class="img-fluid blur-up lazyload" alt="">
                             </a>
                         </div>
@@ -269,18 +269,18 @@
                                         @if($mega_menu->megaMenuCategory->count()>0)
                                         <ul class="mega-menu full-mega-menu">
                                             <li>
-                                                <div class="container">
+                                                <div class="container-fluid">
                                                     <div class="row">
                                                         @foreach($mega_menu->megaMenuCategory as $key=>$mega_menu_category)
                                                         <div class="col mega-box">
                                                             <div class="link-section">
                                                                 <div class="menu-title">
-                                                                    <h5><a href="http://localhost/paaneri/product?categories%5B%5D={{$mega_menu_category->id}}">{{$mega_menu_category->category->name??''}}</a></h5><hr>
+                                                                    <h5><a href="http://localhost/paaneri/product?categories%5B%5D={{$mega_menu_category->id}}">{{$mega_menu_category->category->name??''}}</a></h5>
                                                                 </div>
                                                                 <div class="menu-content">
                                                                     <ul>
                                                                         @foreach(megaMenuCategory($mega_menu_category->category->id??'null') as $key=>$sub_category)
-                                                                        <li><a href="http://localhost/paaneri/product?categories%5B%5D={{$mega_menu_category->category->id??null}}">{{$sub_category->name}}</a></li>
+                                                                        <li><a style="color: black; font-weight: 300;     font-family: system-ui;" href="http://localhost/paaneri/product?categories%5B%5D={{$mega_menu_category->category->id??null}}">{{$sub_category->name}}</a></li>
                                                                         @endforeach
                                                                     </ul>
                                                                 </div>

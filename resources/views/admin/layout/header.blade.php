@@ -7,7 +7,6 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="{{asset('public/assets/images/dashboard/favicon.png')}}" type="image/x-icon">
     <link rel="shortcut icon" href="{{asset('public/assets/images/dashboard/favicon.png')}}" type="image/x-icon">
-    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     <title>Paaneri -@yield('title')</title>
 
     <!-- Google font-->
@@ -34,6 +33,7 @@
 
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="{{asset('public/assets/css/admin.css')}}">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     
     @yield('css')
 </head>

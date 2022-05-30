@@ -119,7 +119,7 @@
                                 </ul>
                                 <div class="tab-content" id="top-tabContent">
                                     <div class="tab-pane fade show active" id="top-profile" role="tabpanel" aria-labelledby="top-profile-tab">
-                                        <form class="form-horizontal auth-form" method="POST" action="{{ route('login') }}">
+                                        <form class="form-horizontal auth-form" method="POST" action="{{ route('admin.login.post') }}">
                                             @csrf
                                             <div class="form-group">
                                                 <input  name="email" type="email" class="form-control" placeholder="Email" id="email" required>

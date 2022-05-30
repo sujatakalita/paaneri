@@ -91,7 +91,8 @@
   --theme-deafult2: #F7BB97; }
 
 :root {
-  --theme-deafult: #ff4c3b; }
+  --theme-deafult: white;
+}
 
 @-webkit-keyframes textNoise1 {
   0% {
@@ -264,40 +265,47 @@ h2 {
   text-transform: uppercase;
   font-weight: 700;
   line-height: 1;
-  letter-spacing: 0.02em; }
+  letter-spacing: 0.02em;
+}
 
 h3 {
   font-size: 24px;
-  font-weight: 400;
-  color: #777777;
-  letter-spacing: 0.03em; }
+  font-weight: 600;
+  color: #000000;
+  letter-spacing: 0.03em;
+}
 
 h4 {
   font-size: 18px;
   text-transform: capitalize;
   font-weight: 400;
   letter-spacing: 0.03em;
-  line-height: 1; }
+  line-height: 1;
+}
 
 h5 {
   font-size: 16px;
   font-weight: 400;
   color: #222222;
   line-height: 24px;
-  letter-spacing: 0.05em; }
+  letter-spacing: 0.05em;
+}
 
 h6 {
   font-size: 14px;
   font-weight: 400;
   color: black;
-  line-height: 24px; }
+  line-height: 24px;
+}
 
 ul {
   padding-left: 0;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+}
 
 li {
-  display: inline-block; }
+  display: inline-block;
+}
 
 p {
   font-size: 14px;
@@ -451,7 +459,25 @@ hr.style1 {
 
 .overflow-hidden {
   overflow: hidden; }
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #E21923;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 del {
   font-size: 14px;
   color: #aaaaaa;
@@ -1232,7 +1258,8 @@ button.btn.btn-solid:active, button.btn.btn-outline:active {
   width: 100%; }
 
 .btn-close {
-  background: none; }
+  /*background: none;*/
+}
 
 .btn-custom {
   padding: 6px 30px !important;
@@ -8808,7 +8835,7 @@ header.stickycls {
   .pixelstrap ul ul a:hover,
   .pixelstrap ul ul a:focus,
   .pixelstrap ul ul a:active {
-    border-left: 16px solid transparent; }
+    border-left: 1px solid transparent; }
   .pixelstrap ul ul ul a,
   .pixelstrap ul ul ul a:hover,
   .pixelstrap ul ul ul a:focus,
@@ -9129,10 +9156,12 @@ header.stickycls {
         background: transparent;
         color: #222222;
         border-radius: 0 !important;
-        font-size: 14px;
-        font-weight: 400;
+        font-size: 13px;
+        font-weight: 600;
         text-transform: capitalize;
-        padding: 5px 35px; }
+        padding: 5px 35px;
+        color: #e52228;
+      }
         .pixelstrap ul a:hover:before, .pixelstrap ul a:hover:hover:before, .pixelstrap ul a:focus:hover:before, .pixelstrap ul a:active:hover:before, .pixelstrap ul a.highlighted:hover:before {
           width: 50px;
           height: 2px;
@@ -9272,7 +9301,8 @@ header.stickycls {
       margin-left: 0 !important; }
   .pixelstrap .full-mega-menu, .pixelstrap .clothing-menu {
     width: 100% !important;
-    padding: 0 30px !important; }
+    padding: 0px 18px 11px 0px !important;
+  }
   .pixelstrap a.highlighted .sub-arrow:before {
     content: '-'; }
   .pixelstrap a .sub-arrow {
@@ -9299,7 +9329,9 @@ header.stickycls {
     .pixelstrap .link-section .menu-title .according-menu:before {
       content: "+";
       position: absolute;
-      right: -18px; }
+      right: -18px;
+      top: -10px;
+    }
   .pixelstrap .link-section .menu-content a {
     text-transform: capitalize; }
   .pixelstrap .link-section ul {
