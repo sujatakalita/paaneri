@@ -50,8 +50,10 @@
                                 </div>
                                 <div class="form-group col-md-12 col-sm-12 col-xs-12" required>
                                     <div class="field-label">Country</div>
-                                    <select name="country" id="country" >
+                                    <select name="country" id="country" onchange="productWeight()">
+                                        <option value="">Selete</option>
                                         <option value="india">India</option>
+                                        <option value="usa">USA</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-12 col-sm-12 col-xs-12">
@@ -70,6 +72,8 @@
                                     <div class="field-label">Postal Code</div>
                                     <input type="text" name="pincode" placeholder="Postal Code" required>
                                 </div>
+                                <input type="hidden" name="totalAmount" value="" id="totalcartamount">
+                                <input type="hidden" name="carttype" value="{{$type}}">
                             </div>
                         </div>
                         <div class="col-lg-6 col-sm-12 col-xs-12">
@@ -83,12 +87,12 @@
                                         <li>{{substr($cart->product->title,0,35)}} × {{$cart->qty}} <span>{{number_format((float)$cart->total_price, 2, '.', '')}}</span></li>
                                         @endforeach
                                     </ul>
+
                                     <ul class="sub-total">
-                                        <li>Subtotal <span class="count">{{number_format((float)countCartTotalPrice(), 2, '.', '')}}</span></li>
-                                        <li>GST <span class="count">18%</span></li>
+                                        <li>Weight amount <span class="count" id="weightAmount">0.00</span></li>
                                     </ul>
                                     <ul class="total">
-                                        <li>Total <span class="count">Rs. {{number_format((float)ammountWithgst(), 2, '.', '')}}</span></li>
+                                        <li>Total <span class="count" id="totalAmount">Rs. {{number_format((float)$countCartTotalPrice, 2, '.', '')}}</span></li>
                                     </ul>
                                 </div>
                                 <div class="payment-box">
@@ -102,10 +106,29 @@
         </div>
     </div>
 </section>
-
-
-
 @endsection
 @section('js')
+<script>
+function totalWeight(){
+           var totalWeight=0;
+            var carts=@json($carts);
+            carts.forEach((element,index) => {
+            totalWeight=parseFloat(totalWeight)+parseFloat(element['product'].weight);
+             });
+           return totalWeight;
+}
+function productWeight(){
+    var country=document.getElementById("country").value;
+    var amount=0.00;
+    var cartAmount=@json($countCartTotalPrice);
+    if(country!='india'){
+      amount=parseFloat(totalWeight())*100;
+    }
+   $("#weightAmount").html(amount.toFixed(2));
+   var totalAmount=cartAmount+amount;
+   document.getElementById("totalcartamount").value=totalAmount;
+   $("#totalAmount").html(totalAmount.toFixed(2));
+ }
 
+</script>
 @endsection

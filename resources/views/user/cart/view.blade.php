@@ -114,4 +114,5 @@
 @section('js')
 <script type="text/javascript" src="{{asset('public/user/assets/js/functions/cart-function.js')}}"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 @endsection

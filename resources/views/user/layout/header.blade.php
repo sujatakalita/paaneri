@@ -327,8 +327,8 @@
                                         </div>
                                         <span class="cart_qty_cls">0</span>
                                         <ul class="show-div shopping-cart">
-                                            @if(userCartItems()!=null)
-                                            @foreach(userCartItems() as $key=>$user_cart_item)
+                                            @if(userCartItems(1)!=null)
+                                            @foreach(userCartItems(1) as $key=>$user_cart_item)
                                             <li>
                                                 <div class="media">
                                                     <a href="#"><img alt="" class="cart-box" src="{{ asset($user_cart_item->product->productAttachment->first()->product_image_server_url)}}"></a>

@@ -54,8 +54,8 @@ Route::group(['middleware' => 'auth'], function(){
         Route::post('/deleteCartItem', [CartController::class,'deleteCartItem']);
     });
     Route::prefix("checkout")->group(function () {
-        Route::get('/{status}', [CheckoutController::class,'checkout'])->name('checkout');
-        Route::post('/store', [CheckoutController::class,'store'])->name('user.checkout');
+        Route::get('/{status}', [CheckoutController::class,'checkout'])->name('checkout')->middleware('auth');
+        Route::post('/store', [CheckoutController::class,'store'])->name('user.checkout')->middleware('auth');
     });
     Route::prefix("review")->group(function () {
         Route::post('/', [ReviewController::class,'Store'])->name('review.store');
@@ -88,5 +88,8 @@ Route::group(['prefix' => 'return-policy'], function () {
 
 Route::prefix("/order")->group(function () {
 Route::post('/{product_id}', [OrderController::class, 'buyOrCart'])->name('admin.order.buyorcart');
+Route::post('/buy/{status}', [OrderController::class, 'payment'])->name('user.plan.payment');
+Route::post('/success', [OrderController::class, 'success'])->name('user.order');
 });
+
 require __DIR__ . '/auth.php';

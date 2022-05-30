@@ -8,28 +8,33 @@ use App\Models\User\Cart;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
 class CheckoutController extends Controller
 {
-    public function checkout()
+    public function checkout($cart_type)
     {
+        $type=Crypt::decrypt($cart_type);
 
         $countCartTotalPrice = 0.00;
+
         $carts = Cart::with(['product' => function ($query) {
             $query->with('productAttachment');
-        }])->where('user_id', auth()->user()->id)->get();
+        }])->where('user_id', auth()->user()->id)->where('status',$type)->get();
 
         if ($carts) {
             $countCartTotalPrice = $carts->sum('total_price');
         }
 
-        return view('user.checkout.index', compact('carts', 'countCartTotalPrice'));
+
+        return view('user.checkout.index', compact('carts', 'countCartTotalPrice','type'));
     }
     public function store(Request $request)
     {
-        try {
 
-            if (!(Auth::check())) {
+           $carttype=$request->carttype;
+        try {
+             if (!(Auth::check())) {
                 Toastr::warning('Please Login', 'Title', ["positionClass" => "toast-top-right"]);
                 return redirect()->back();
             }
@@ -48,7 +53,7 @@ class CheckoutController extends Controller
 
             $data = [
                 "key"         => 'rzp_test_E1hJuQrwxuojrx',
-                "amount"      => ammountWithgst(),
+                "amount"      => $request->totalAmount,
                 "name"        => "Toys on rent",
                 "description" => "Product payment",
                 "image"       => url("images/logo.jpg"),
@@ -64,14 +69,15 @@ class CheckoutController extends Controller
             $countCartTotalPrice = 0.00;
             $carts = Cart::with(['product' => function ($query) {
                 $query->with('productAttachment');
-            }])->where('user_id', auth()->user()->id)->get();
+            }])->where('user_id', auth()->user()->id)->where('status',$request->carttype)->get();
 
             if ($carts) {
                 $countCartTotalPrice = $carts->sum('total_price');
             }
-            return view('user.checkout.details', compact('carts', 'countCartTotalPrice', 'data','store_address'));
+
+            return view('user.checkout.details', compact('carts', 'countCartTotalPrice', 'data','store_address','carttype'));
         } catch (\Throwable $th) {
-            //throw $th;
+            dd($th);
         }
     }
 }

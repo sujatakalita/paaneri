@@ -20,9 +20,10 @@ function allCategory(){
     return $categories=Category::with('subCategory')->where('parent_id',null)->where('status',1)->get();
 }
 
-function userCartItems(){
+function userCartItems($type){
+    // dd($type);
     if (auth()->check()) {
-        $carts=Cart::where('user_id', auth()->user()->id)->get();
+        $carts=Cart::where('user_id', auth()->user()->id)->where('status',$type)->get();
         if ($carts==null) {
             return false;
         } else {
