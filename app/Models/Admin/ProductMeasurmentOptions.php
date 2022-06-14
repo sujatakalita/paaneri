@@ -14,6 +14,6 @@ class ProductMeasurmentOptions extends Model
 
     public function productMeasurment()
     {
-        return $this->belongsTo(productMeasurment::class);
+        return $this->belongsTo(ProductMeasurment::class);
     }
 }

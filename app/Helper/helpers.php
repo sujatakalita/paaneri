@@ -8,7 +8,9 @@ use App\Models\Admin\ProductAttachment;
 use App\Models\Admin\ProductColour;
 use App\Models\Admin\ProductSize;
 use App\Models\User\Cart;
+use App\Models\User\Order;
 use App\Models\User\Wishlist;
+use App\Models\Admin\Hero;
 use Gloudemans\Shoppingcart\Facades\Cart as FacadesCart;
 
 function latestDrops()
@@ -20,9 +22,14 @@ function allCategory(){
     return $categories=Category::with('subCategory')->where('parent_id',null)->where('status',1)->get();
 }
 
-function userCartItems(){
+function allSubCategory(){
+    return $sub_categories=Category::with('subCategory')->where('parent_id','!=',null)->where('status',1)->get();
+}
+
+function userCartItems($type){
+    // dd($type);
     if (auth()->check()) {
-        $carts=Cart::where('user_id', auth()->user()->id)->get();
+        $carts=Cart::where('user_id', auth()->user()->id)->where('status',$type)->get();
         if ($carts==null) {
             return false;
         } else {
@@ -141,4 +148,16 @@ function alreadyInWislist($product_id){
      }else{
          return false;
      }
+     
+}
+function transactionID(){
+
+    $transaction_id = Order::whereYear('created_at', date('Y'))->withTrashed()->count() + 1;
+    $transaction_no    = 'Paaneri/' . $transaction_id . '/' . date('dmY');
+    return $transaction_no;
+
+}
+
+function hero(){
+    return Hero::where('status',1)->get();
 }

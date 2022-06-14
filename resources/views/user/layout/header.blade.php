@@ -263,8 +263,21 @@
                                     </li>
                                     @foreach(MegaMenuAll() as $key=>$mega_menu)
                                     <li class="mega" id="hover-cls">
+                                    @if($mega_menu->slug == 'sale')
+                                        <a href="{{ route('user.sale') }}">{{$mega_menu->name}} @if($mega_menu->mega_menu_type==3)<div class="lable-nav">new</div>@endif</a>
+                                    @elseif($mega_menu->slug == 'men')
+                                        <a href="{{ route('user.men',['mega_menu_men_slug' => $mega_menu->slug]) }}">{{$mega_menu->name}} @if($mega_menu->mega_menu_type==3)<div class="lable-nav">new</div>@endif</a>
+
+                                    @elseif($mega_menu->slug == 'bridal')
+                                        <a href="{{ route('user.bridal',['mega_menu_bridal_slug' => $mega_menu->slug]) }}">{{$mega_menu->name}} @if($mega_menu->mega_menu_type==3)<div class="lable-nav">new</div>@endif</a>
+                                    
+                                    @elseif($mega_menu->slug == 'accessories')
+                                        <a href="{{ route('user.accessories',['mega_menu_accessories_slug' => $mega_menu->slug]) }}">{{$mega_menu->name}} @if($mega_menu->mega_menu_type==3)<div class="lable-nav">new</div>@endif</a>
+                                        
+                                    @else
                                         <a href="#">{{$mega_menu->name}} @if($mega_menu->mega_menu_type==3)<div class="lable-nav">new</div>@endif</a>
-                                        <!-- <a href="#">feature <div class="lable-nav">new</div></a> -->
+                                    @endif
+                                    <!-- <a href="#">feature <div class="lable-nav">new</div></a> -->
 
                                         @if($mega_menu->megaMenuCategory->count()>0)
                                         <ul class="mega-menu full-mega-menu">
@@ -280,7 +293,10 @@
                                                                 <div class="menu-content">
                                                                     <ul>
                                                                         @foreach(megaMenuCategory($mega_menu_category->category->id??'null') as $key=>$sub_category)
-                                                                        <li><a style="color: black; font-weight: 300;     font-family: system-ui;" href="http://localhost/paaneri/product?categories%5B%5D={{$mega_menu_category->category->id??null}}">{{$sub_category->name}}</a></li>
+                                                                        <li>
+    <a style="color: black; font-weight: 300; font-family: system-ui;" href="{{ route('user.product.byCategory', ['mega_menu' => $mega_menu->slug ?? null, 'category_slug' => $sub_category->slug ?? null]) }}"> {{$sub_category->name}}
+    </a>
+</li>
                                                                         @endforeach
                                                                     </ul>
                                                                 </div>
@@ -327,8 +343,8 @@
                                         </div>
                                         <span class="cart_qty_cls">0</span>
                                         <ul class="show-div shopping-cart">
-                                            @if(userCartItems()!=null)
-                                            @foreach(userCartItems() as $key=>$user_cart_item)
+                                            @if(userCartItems(1)!=null)
+                                            @foreach(userCartItems(1) as $key=>$user_cart_item)
                                             <li>
                                                 <div class="media">
                                                     <a href="#"><img alt="" class="cart-box" src="{{ asset($user_cart_item->product->productAttachment->first()->product_image_server_url)}}"></a>

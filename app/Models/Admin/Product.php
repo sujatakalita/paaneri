@@ -5,12 +5,15 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use willvincent\Rateable\Rateable;
 
 class Product extends Model
 {
     use SoftDeletes;
+    use Rateable;
+    
     protected $table="products";
-    protected $fillable=['category_id','sub_category_id','title','slug','code','video_url','description','market_price','selling_price','total_product','available_product','is_available','status','product_delivery_status'];
+    protected $fillable=['category_id','sub_category_id','title','slug','code','video_url','description','market_price','selling_price','total_product','available_product','is_available','status','product_delivery_status','weight','discount','discount_rate'];
 
 
     public function productAttachment()

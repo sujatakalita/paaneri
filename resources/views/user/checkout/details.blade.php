@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="product-order">
-                    @foreach(userCartItems() as $key=>$user_cart_item)
+                    @foreach(userCartItems($carttype) as $key=>$user_cart_item)
                     <div class="row product-order-detail">
                         <div class="col-3"><img src="{{ asset($user_cart_item->product->productAttachment->first()->product_image_server_url)}}" alt="" class="img-fluid blur-up lazyload"></div>
                         <div class="col-3 order_detail">
@@ -47,54 +47,54 @@
                         </div>
                     </div>
                     @endforeach
-                    <div class="total-sec">
-                        <ul>
-                            <li>subtotal <span>Rs.{{number_format((float)ammountWithgst(), 2, '.', '')}}</span></li>
 
-                            <li>tax(GST) <span>18%</span></li>
-                        </ul>
-                    </div>
                     <div class="final-total">
-                        <h3>total <span>Rs.{{number_format((float)countCartTotalPrice(), 2, '.', '')}}</span></h3>
+                        <h3>total <span>Rs.{{number_format((float)$countCartTotalPrice, 2, '.', '')}}</span></h3>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="order-success-sec">
                     <div class="row">
-                        <div class="col-sm-6">
-                            <h4>summery</h4>
-                            <ul class="order-detail">
-                                <li>Number: {{auth()->user()->mobile_no}}</li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6">
-                            <h4>shipping address</h4>
-                            <ul class="order-detail">
-                                <li>{{$store_address->address}}</li>
-                                <li>{{$store_address->country}}</li>
-                                <li>{{$store_address->state}}/{{$store_address->city}}/{{$store_address->pincode}}</li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-12 payment-mode">
+                        <form name='razorpayform' action="{{route('user.plan.payment', $carttype)}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="totlAmount" value="{{$countCartTotalPrice}}">
+                            <div class="col-sm-6">
+                                <h4>summery</h4>
+                                <ul class="order-detail">
+                                    <li>Number: {{auth()->user()->mobile_no}}</li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6">
+                                <h4>shipping address</h4>
+                                <ul class="order-detail">
+                                    <li>{{$store_address->address}}</li>
+                                    <li>{{$store_address->country}}</li>
+                                    <li>{{$store_address->state}}/{{$store_address->city}}/{{$store_address->pincode}}</li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-12 payment-mode">
 
-                                <button class="btn btn-solid" id="rzp-button1">Proceed To Pay</button>
+                                <button class="btn btn-solid" type="submit">Proceed To Pay</button>
 
-                        </div>
-
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
 </section>
-<form name='razorpayform' action="" method="POST">
+<!-- <form name='razorpayform' action="{{route('user.plan.payment', $carttype)}}" method="POST">
     @csrf
-    <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id">
+    <!-- <input type="hidden" name="type"value=""> -->
+<input type="hidden" name="totlAmount" value="{{$countCartTotalPrice}}">
+<!-- <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id">
     <input type="hidden" name="razorpay_signature" id="razorpay_signature">
     <input type="hidden" name="razorpay_order_id" id="razorpay_order_id">
-    <input type="hidden" name="response" id="response">
-</form>
+    <input type="hidden" name="response" id="response"> -->
+</form> -->
 
 
 
@@ -104,7 +104,9 @@
 <script>
     // Checkout details as a json
     var options = @json($data);
+
     options.handler = function(response) {
+        console.log(response);
         document.getElementById('razorpay_order_id').value = response.razorpay_order_id;
         document.getElementById('razorpay_payment_id').value = response.razorpay_payment_id;
         document.getElementById('razorpay_signature').value = response.razorpay_signature;
@@ -118,6 +120,7 @@
     var rzp = new Razorpay(options);
 
     document.getElementById('rzp-button1').onclick = function(e) {
+
         rzp.open();
         e.preventDefault();
     }

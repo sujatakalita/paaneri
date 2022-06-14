@@ -12,7 +12,8 @@ class ProductColour extends Model
     protected $fillable=[
         'product_id',
         'colour',
-        'is_default'
+        'is_default',
+        'deleted_at'
     ];
     
     public function product()

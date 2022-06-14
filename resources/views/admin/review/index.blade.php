@@ -58,10 +58,6 @@ Reviews
                                     <td>
                                         <div class="btn-group">
                                         	<a class="btn btn-sm btn-info" href="{{ route('admin.approve',Crypt::encrypt($review->id)) }}"><i class="fa fa-star" title="Approve review" onclick="confirm('Are You Sure');"></i></a>
-
-                                            <a class="btn btn-sm btn-success" href=""><i class="fa fa-edit me-2"></i></a>
-
-                                            <a class="btn btn-sm btn-danger" href=""><i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>

@@ -10,7 +10,7 @@ class Category extends Model
 {
     use SoftDeletes;
     protected $table = 'categories';
-    protected $fillable=['parent_id','name','slug','category_image','status','seoTitle','seoDescription','seoKeywords','canonicalUrl'];
+    protected $fillable=['parent_id','name','slug','category_image','status','seoTitle','seoDescription','seoKeywords','canonicalUrl','deleted_at'];
 
     public function subCategory()
     {

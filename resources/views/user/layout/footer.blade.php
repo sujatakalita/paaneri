@@ -67,10 +67,11 @@
                         </div>
                         <div class="footer-contant">
                             <ul>
+                                <li><a href="{{route('user.product')}}">All Products</a></li>
                                 <li><a href="{{route('user.faqs')}}">FAQ's</a></li>
                                 <li><a href="{{route('user.return')}}">Return Policy</a></li>
                                 <li><a href="{{route('user.policy')}}">Private Policy</a></li>
-                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="{{ route('user.t&c') }}">Terms & Conditions</a></li>
                                 <li><a href="#">Shipping Policy</a></li>
                             </ul>
                         </div>

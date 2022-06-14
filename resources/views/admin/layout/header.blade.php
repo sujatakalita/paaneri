@@ -34,6 +34,6 @@
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="{{asset('public/assets/css/admin.css')}}">
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
-    
+    <script src="https://kit.fontawesome.com/5a8c759056.js" crossorigin="anonymous"></script>
     @yield('css')
 </head>

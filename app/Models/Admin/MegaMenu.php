@@ -14,13 +14,15 @@ class MegaMenu extends Model
         'name',
         'slug',
         'mega_menu_type',
-        'status'
+        'status',
+        'image',
+        'deleted_at'
     ];
     public static function getAll(){
-       return Megamenu::select('id','name','slug','mega_menu_type','status')->get();
+       return Megamenu::select('id','name','slug','mega_menu_type','status','image')->get();
     }
     public static function getActiveAll(){
-        return Megamenu::select('id','name','slug','mega_menu_type','status')->where('status',1)->get();
+        return Megamenu::select('id','name','slug','mega_menu_type','status','image')->where('status',1)->get();
     }
     public function megaMenuCategory()
     {

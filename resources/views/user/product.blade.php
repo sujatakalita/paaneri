@@ -1,6 +1,17 @@
 @extends('user.layout.master')
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{asset('public/user/assets/css/vendors/price-range.css')}}">
+<style type="text/css">
+    .scroll {
+        height: 800px!important;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    /*.scroll {
+        height: 300px;
+        
+    }*/
+</style>
 @endsection
 @section('content')
 <section class="section-b-space ratio_asos" style="padding-top: 30px!important">
@@ -11,10 +22,39 @@
                     <form method="get">
                         <button type="submit" class="btn btn-solid" id="mc-submit" style="height:50px;width:260px">Filter</button>&nbsp;
                         <a href="{{request()->url()}}" type="submit" class="btn btn-success" id="mc-submit" style="height:34px;width:260px">Clear Filter</a>
-                        <div class="collection-filter-block">
+                        
+                        <div class="collection-filter-block scroll">
                             <!-- brand filter start -->
                             <div class="collection-mobile-back"><span class="filter-back"><i class="fa fa-angle-left" aria-hidden="true"></i> back</span></div>
+
+                            {{-- ********************************************** --}}
+
+                            @foreach($mega_menus as $mega_menu)
+
                             <div class="collection-collapse-block open">
+                                <h3 class="collapse-block-title">{{$mega_menu->name??''}}</h3>
+                                <div class="collection-collapse-block-content">
+                                    <div class="collection-brand-filter">
+                                        @if($mega_menu->megaMenuCategory->count()>0)
+                                        @foreach($mega_menu->megaMenuCategory as $key=>$mega_menu_category)
+                                        @foreach(megaMenuCategory($mega_menu_category->category->id??'null') as $key=>$sub_category)
+                                        <div class="form-check collection-filter-checkbox">
+                                            <input type="checkbox" class="form-check-input" name="categories[]" value="{{$sub_category->id}}" id="{{$sub_category->name}}" {{ (is_array(request()->categories) && in_array($sub_category->id, request()->categories)) ? ' checked' : '' }}>
+                                            <label class="form-check-label" for="{{$sub_category->name}}">{{$sub_category->name}}</label>
+                                        </div>
+                                        @endforeach
+                                        @endforeach
+                                        @endif
+
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            @endforeach
+
+                            {{-- ********************************************** --}}
+
+                            {{-- <div class="collection-collapse-block open">
                                 <h3 class="collapse-block-title">CATEGORY</h3>
                                 <div class="collection-collapse-block-content">
                                     <div class="collection-brand-filter">
@@ -27,9 +67,9 @@
 
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- color filter start here -->
-                            <div class="collection-collapse-block open">
+                            {{-- <div class="collection-collapse-block open">
                                 <h3 class="collapse-block-title">COLORS</h3>
                                 <div class="collection-collapse-block-content">
                                     <div class="color-selector">
@@ -65,7 +105,8 @@
 
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
+
                         </div>
                     </form>
                 </div>

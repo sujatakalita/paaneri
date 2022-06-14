@@ -105,7 +105,7 @@
         </div>
         <div class="row cart-buttons">
             <div class="col-6"><a href="{{route('user.product')}}" class="btn btn-solid">continue shopping</a></div>
-            <div class="col-6"><a href="{{route('checkout')}}" class="btn btn-solid">check out</a></div>
+            <div class="col-6"><a href="{{route('checkout'['status' => 1])}}" class="btn btn-solid">check out</a></div>
         </div>
     </div>
 </section>
@@ -114,4 +114,5 @@
 @section('js')
 <script type="text/javascript" src="{{asset('public/user/assets/js/functions/cart-function.js')}}"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 @endsection

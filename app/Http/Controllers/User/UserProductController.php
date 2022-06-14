@@ -10,6 +10,13 @@ use App\Models\Admin\ProductAttachment;
 use App\Models\Admin\productSize;
 use App\Models\User\ProductReview;
 use Illuminate\Http\Request;
+use \willvincent\Rateable\Rating;
+use Brian2694\Toastr\Facades\Toastr;
+use App\Models\Admin\productMeasurmentOptions;
+use App\Models\Admin\Category;
+use App\Models\Admin\ProductCategory;
+use Auth,Crypt;
+
 
 class UserProductController extends Controller
 {
@@ -23,10 +30,12 @@ class UserProductController extends Controller
             $query->where('is_default', 1);
         }])->orderBy('id', 'DESC')->paginate(50);
 
-        return view('user.product', compact('products'));
+        return view('user.product.index', compact('products','mega_menus'));
     }
+    
     public function viewDetails($product_slug)
     {
+        
         try {
             $product = Product::with([
                 'productColor',
@@ -39,12 +48,17 @@ class UserProductController extends Controller
                 'productMeasurment' => function ($query) {
                     $query->with('productMeasurmentOptions')->where('status', 1);
                 }
-            ])->where('slug', $product_slug)->first();
+            ])->where('slug',$product_slug)->first();
+
+            $tot_review = Rating::where([['rateable_id',$product->id],['status',1]])->count();
 
             $reviews = ProductReview::with('product','user')->where([['status',1],['is_approved',1]])->get();
-
-            return view('user.product.productdetails', compact('product','reviews'));
+            
+            // dd($tot_review);
+            
+            return view('user.product.productdetails', compact('product','reviews','tot_review'));
         } catch (\Throwable $th) {
+            dd($th);
             //throw $th;
         }
     }
@@ -105,5 +119,129 @@ class UserProductController extends Controller
             $query->WhereIn('product_delivery_status', request("product_delivery_status"));
         });
         return $products;
+    }
+
+    public function ratingStore(Request $request)
+    {
+        $blog_id = Crypt::encrypt($request->product_id);
+        $ip_addres = $request->ip();
+        // dd(Location::get($ip_addres));
+        // dd($request->id);
+
+        $existingBlogRating = Rating::where([['ip_address',$ip_addres],['rateable_id',$request->product_id],['status',1]])->first();
+        
+        request()->validate(['rate' => 'required']);
+
+        if ($existingBlogRating) {
+            Rating::where([['ip_address',$ip_addres],['rateable_id',$request->product_id],['status',1]])->update(['rating' => $request->rate]);
+        }else{
+            $post = Product::find($request->product_id);
+            $rating = new Rating();
+            $rating->rating = $request->rate;
+            $rating->ip_address = $ip_addres;
+            $rating->user_id = Auth::user()->id;
+            $post->ratings()->save($rating);
+        }
+
+
+        Toastr::success('Your rating saved successfully', 'success', ["positionClass" => "toast-top-right"]);
+        return redirect()->back();
+
+    }
+
+    public function productByCategory(Request $request, $category_slug, $mega_menu)
+    {
+        $category_id = Category::where('slug',$request->category_slug)->first()->id ;
+        $mega_menu_id = MegaMenu::where('slug',$request->mega_menu)->first()->id ;
+        $mega_menus = MegaMenu::with('megaMenuCategory')->get();
+
+        $all_products_by_cat = ProductCategory::with('product')->where([['category_id',$category_id],['type',2]])->orderBy('id', 'DESC')->paginate(50);
+        // dd($all_products_by_cat);
+        return view('user.product.by_category',compact('all_products_by_cat','mega_menus'));
+    }
+
+    public function sale(Request $request)
+    {
+        $mega_menus = MegaMenu::with('megaMenuCategory')->get();
+
+        $products = Product::where([['discount',1],['status',1]])->orderBy('id', 'DESC')->paginate(50);
+       
+        return view('user.product.sale',compact('products','mega_menus'));
+    }
+
+    public function men(Request $request, $mega_menu_men_slug)
+    {
+        $mega_menu_id = MegaMenu::with('megaMenuCategory')->where([['status',1],['slug',$mega_menu_men_slug]])->first();
+
+        $mega_menus = MegaMenu::with('megaMenuCategory')->get();
+
+        // foreach($mega_menu->megaMenuCategory as $key=>$mega_menu_category) {
+        //     $products_cat = ProductCategory::with('product')->where([['category_id',$mega_menu_category->category_id],['type',1]])->orderBy('id', 'DESC')->get();
+        // }
+
+        // dd($mega_menu_id);
+
+        $products = ProductCategory::with('product')->where([['type',3],['category_id',$mega_menu_id->id]])->orderBy('id', 'DESC')->paginate(50);
+            
+        return view('user.product.men',compact('products','mega_menus'));
+    }
+
+    public function bridal(Request $request, $mega_menu_bridal_slug)
+    {
+        $mega_menus = MegaMenu::with('megaMenuCategory')->get();
+
+        $mega_menu_id = MegaMenu::with('megaMenuCategory')->where([['status',1],['slug',$mega_menu_bridal_slug]])->first();
+
+
+        $products = ProductCategory::with('product')->where([['type',3],['category_id',$mega_menu_id->id]])->orderBy('id', 'DESC')->paginate(50);
+        
+        // dd($products);
+
+        return view('user.product.bridal',compact('products','mega_menus'));
+    }
+
+    public function accessories(Request $request, $mega_menu_accessories_slug)
+    {
+        $mega_menus = MegaMenu::with('megaMenuCategory')->get();
+        
+        $mega_menu_id = MegaMenu::with('megaMenuCategory')->where([['status',1],['slug',$mega_menu_accessories_slug]])->first();
+
+
+        $products = ProductCategory::with('product')->where([['type',3],['category_id',$mega_menu_id->id]])->orderBy('id', 'DESC')->paginate(50);
+        
+        return view('user.product.accessories',compact('products','mega_menus'));
+    }
+
+    public function occasion(Request $request, $scat_slug)
+    {
+        $cat_id = Category::where([['status',1],['slug',$scat_slug]])->first();
+
+        $mega_menus = MegaMenu::with('megaMenuCategory')->get();
+
+        $products = ProductCategory::with('product')->where([['type',2],['category_id',$cat_id->id]])->orderBy('id', 'DESC')->paginate(50);
+            
+        return view('user.product.shop_by_occasion',compact('products','mega_menus'));
+    }
+
+    public function style(Request $request, $scat_slug)
+    {
+        $cat_id = Category::where([['status',1],['slug',$scat_slug]])->first();
+
+        $mega_menus = MegaMenu::with('megaMenuCategory')->get();
+
+        $products = ProductCategory::with('product')->where([['type',2],['category_id',$cat_id->id]])->orderBy('id', 'DESC')->paginate(50);
+            
+        return view('user.product.shop_by_style',compact('products','mega_menus'));
+    }
+
+    public function color(Request $request, $scat_slug)
+    {
+        $cat_id = Category::where([['status',1],['slug',$scat_slug]])->first();
+
+        $mega_menus = MegaMenu::with('megaMenuCategory')->get();
+
+        $products = ProductCategory::with('product')->where([['type',2],['category_id',$cat_id->id]])->orderBy('id', 'DESC')->paginate(50);
+            
+        return view('user.product.shop_by_color',compact('products','mega_menus'));
     }
 }
